@@ -1,0 +1,356 @@
+/* ============================================
+   JELLYFIN CUSTOM THEME - Dashboard / Accueil
+   Page d'accueil avec carousels
+   ============================================ */
+
+/* === CONTENEUR PRINCIPAL === */
+
+.homePage,
+#indexPage,
+.pageWithAbsoluteTabs {
+    background: var(--bg-primary) !important;
+    padding-top: calc(var(--header-height) + var(--space-lg)) !important;
+}
+
+/* === SECTIONS === */
+
+.section,
+.homePageSection,
+.verticalSection {
+    margin-bottom: var(--space-2xl) !important;
+    padding: 0 var(--space-lg) !important;
+}
+
+/* Titre de section */
+.sectionTitle,
+.sectionTitleContainer h2,
+.homePageSection h2 {
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-xl) !important;
+    font-weight: var(--font-weight-semibold) !important;
+    margin-bottom: var(--space-md) !important;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+/* Icône de section */
+.sectionTitleIcon {
+    color: var(--accent-secondary) !important;
+    font-size: var(--font-size-xl) !important;
+}
+
+/* Lien "Voir tout" */
+.sectionTitleLink,
+.button-flat.button-accent {
+    color: var(--accent-secondary) !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: var(--font-weight-medium) !important;
+    text-transform: none !important;
+    transition: color var(--transition-fast);
+}
+
+.sectionTitleLink:hover {
+    color: var(--accent-light) !important;
+}
+
+/* === CAROUSELS / SCROLLERS === */
+
+.itemsContainer,
+.scrollSlider,
+.emby-scroller {
+    display: flex !important;
+    gap: var(--space-md) !important;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: var(--space-sm) 0 !important;
+    margin: 0 calc(-1 * var(--space-lg));
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Masquer la scrollbar sur les carousels (optionnel) */
+.emby-scroller::-webkit-scrollbar,
+.scrollSlider::-webkit-scrollbar {
+    height: 0;
+    display: none;
+}
+
+/* Boutons de navigation du carousel */
+.emby-scrollbuttons-scroller .emby-scrollbutton,
+.scrollbuttoncontainer button {
+    background: rgba(22, 22, 29, 0.9) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-full) !important;
+    width: 44px !important;
+    height: 44px !important;
+    position: absolute;
+    z-index: 10;
+    transition: all var(--transition-fast) !important;
+    box-shadow: var(--shadow-lg);
+}
+
+.emby-scrollbuttons-scroller .emby-scrollbutton:hover,
+.scrollbuttoncontainer button:hover {
+    background: var(--accent-primary) !important;
+    border-color: var(--accent-primary) !important;
+    transform: scale(1.1);
+}
+
+/* === CARTES MÉDIA (FILMS/SÉRIES) === */
+
+.card,
+.cardBox {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    background: var(--bg-secondary) !important;
+    border-radius: var(--radius-lg) !important;
+    overflow: hidden;
+    transition: transform var(--transition-normal),
+        box-shadow var(--transition-normal) !important;
+    position: relative;
+}
+
+.card:hover,
+.cardBox:hover {
+    transform: scale(1.05) translateY(-8px);
+    box-shadow: var(--shadow-xl), var(--shadow-glow) !important;
+    z-index: 5;
+}
+
+/* Image de la carte */
+.cardImageContainer,
+.cardImage {
+    aspect-ratio: var(--card-aspect-ratio);
+    overflow: hidden;
+    position: relative;
+}
+
+.cardImage-img,
+.cardImageContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.card:hover .cardImage-img,
+.card:hover .cardImageContainer img {
+    transform: scale(1.08);
+}
+
+/* Overlay au hover */
+.cardOverlayContainer,
+.cardHoverMenu {
+    position: absolute !important;
+    inset: 0;
+    background: linear-gradient(to top,
+            rgba(10, 10, 15, 0.95) 0%,
+            rgba(10, 10, 15, 0.6) 40%,
+            transparent 100%) !important;
+    opacity: 0;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    padding: var(--space-md) !important;
+    transition: opacity var(--transition-normal) !important;
+}
+
+.card:hover .cardOverlayContainer,
+.card:hover .cardHoverMenu {
+    opacity: 1;
+}
+
+/* Bouton lecture sur overlay */
+.cardOverlayButton,
+.cardOverlayFab {
+    background: var(--accent-gradient) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-full) !important;
+    width: 48px !important;
+    height: 48px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    transition: all var(--transition-normal) !important;
+    box-shadow: var(--shadow-lg);
+}
+
+.card:hover .cardOverlayButton,
+.card:hover .cardOverlayFab {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.cardOverlayButton:hover,
+.cardOverlayFab:hover {
+    transform: translate(-50%, -50%) scale(1.1) !important;
+    box-shadow: var(--shadow-glow-strong);
+}
+
+/* === INFOS DE LA CARTE === */
+
+.cardFooter,
+.cardScalable .cardText {
+    padding: var(--space-sm) var(--space-md) !important;
+    background: transparent !important;
+}
+
+.cardText,
+.cardDefaultText {
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: var(--font-weight-medium) !important;
+    line-height: var(--line-height-tight) !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Texte secondaire (année, durée) */
+.cardText-secondary,
+.textActionButton {
+    color: var(--text-muted) !important;
+    font-size: var(--font-size-xs) !important;
+}
+
+/* === BARRE DE PROGRESSION "CONTINUER À REGARDER" === */
+
+.itemProgressBar {
+    position: absolute !important;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg) !important;
+}
+
+.itemProgressBarForeground {
+    height: 100% !important;
+    background: var(--accent-gradient) !important;
+    border-radius: 0 0 0 var(--radius-lg);
+    transition: width 0.3s ease;
+}
+
+/* === BADGE "NOUVEAU" / INDICATEURS === */
+
+.indicator,
+.countIndicator,
+.playedIndicator {
+    position: absolute !important;
+    top: var(--space-sm) !important;
+    right: var(--space-sm) !important;
+    background: var(--color-success) !important;
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-xs) !important;
+    font-weight: var(--font-weight-bold) !important;
+    padding: var(--space-xs) var(--space-sm) !important;
+    border-radius: var(--radius-sm) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.playedIndicator {
+    background: var(--accent-primary) !important;
+}
+
+.countIndicator {
+    background: var(--color-error) !important;
+    border-radius: var(--radius-full) !important;
+    min-width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* === GRILLE ALTERNATIVE (VUE LISTE) === */
+
+.listItem {
+    background: var(--bg-secondary) !important;
+    border-radius: var(--radius-lg) !important;
+    margin-bottom: var(--space-sm) !important;
+    padding: var(--space-md) !important;
+    display: flex;
+    gap: var(--space-md);
+    transition: background-color var(--transition-fast);
+}
+
+.listItem:hover {
+    background: var(--bg-tertiary) !important;
+}
+
+/* === SECTION SPÉCIALE: HERO BANNER (si activé) === */
+
+.homePageHeroImage,
+.backdropContainer {
+    width: 100%;
+    position: relative;
+    margin-bottom: var(--space-2xl);
+}
+
+.homePageHeroImage::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to top, var(--bg-primary), transparent);
+    pointer-events: none;
+}
+
+/* === RESPONSIVE DASHBOARD === */
+
+@media (max-width: 1024px) {
+    .card {
+        min-width: 140px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .section,
+    .homePageSection {
+        padding: 0 var(--space-md) !important;
+    }
+
+    .itemsContainer,
+    .scrollSlider {
+        gap: var(--space-sm) !important;
+        padding-left: var(--space-md);
+        padding-right: var(--space-md);
+        margin: 0 calc(-1 * var(--space-md));
+    }
+
+    .card {
+        min-width: 120px;
+    }
+
+    .cardOverlayButton,
+    .cardOverlayFab {
+        width: 40px !important;
+        height: 40px !important;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .sectionTitle,
+    .homePageSection h2 {
+        font-size: var(--font-size-lg) !important;
+    }
+
+    .card {
+        min-width: 100px;
+    }
+}

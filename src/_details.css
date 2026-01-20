@@ -1,0 +1,475 @@
+/* ============================================
+   JELLYFIN CUSTOM THEME - Pages de Détails
+   Films, Séries, Épisodes
+   ============================================ */
+
+/* === CONTENEUR PRINCIPAL === */
+
+.detailPage,
+.itemDetailPage {
+    background: var(--bg-primary) !important;
+    min-height: 100vh;
+}
+
+/* === BACKDROP (IMAGE DE FOND) === */
+
+.backdropImage,
+.detailImageContainer .lazy {
+    width: 100%;
+    height: 60vh;
+    min-height: 400px;
+    max-height: 600px;
+    object-fit: cover;
+    position: relative;
+}
+
+/* Gradient overlay sur backdrop */
+.itemBackdrop::after,
+.backdropContainer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(10, 10, 15, 0.3) 30%,
+            rgba(10, 10, 15, 0.8) 70%,
+            var(--bg-primary) 100%);
+    pointer-events: none;
+}
+
+/* === SECTION PRINCIPALE === */
+
+.detailPageContent,
+.detailSection {
+    position: relative;
+    z-index: 1;
+    margin-top: -200px;
+    padding: 0 var(--space-xl);
+}
+
+.detailPagePrimaryContainer,
+.mainDetailInfo {
+    display: flex;
+    gap: var(--space-xl);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* === POSTER === */
+
+.detailLogo,
+.detailPrimaryImage,
+.primaryImageWrapper {
+    flex-shrink: 0;
+    width: 250px;
+}
+
+.detailPrimaryImage img,
+.primaryImageWrapper img {
+    width: 100%;
+    border-radius: var(--radius-xl) !important;
+    box-shadow: var(--shadow-xl) !important;
+    border: 1px solid var(--border-color);
+}
+
+/* === INFOS PRINCIPALES === */
+
+.detailPageSecondaryContainer,
+.detailTextInfo {
+    flex: 1;
+}
+
+/* Titre */
+.detailPageTitle,
+.itemName h1,
+h1.itemName {
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-4xl) !important;
+    font-weight: var(--font-weight-bold) !important;
+    line-height: var(--line-height-tight) !important;
+    margin: 0 0 var(--space-md) !important;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Titre original */
+.originalTitle {
+    color: var(--text-muted) !important;
+    font-size: var(--font-size-lg) !important;
+    font-style: italic;
+    margin-bottom: var(--space-md) !important;
+}
+
+/* === MÉTADONNÉES === */
+
+.itemMiscInfo,
+.mediaInfoPrimary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
+.itemMiscInfo-primary,
+.itemMiscInfo span {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-sm) !important;
+}
+
+/* Badges (année, durée, classification) */
+.mediaInfoItem {
+    background: var(--bg-elevated) !important;
+    color: var(--text-secondary) !important;
+    padding: var(--space-xs) var(--space-sm) !important;
+    border-radius: var(--radius-sm) !important;
+    font-size: var(--font-size-xs) !important;
+    font-weight: var(--font-weight-medium) !important;
+}
+
+/* Rating / Note */
+.starRatingContainer,
+.itemCommunityRating {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    color: var(--color-warning) !important;
+    font-weight: var(--font-weight-semibold) !important;
+}
+
+.starRatingContainer .material-icons {
+    color: var(--color-warning) !important;
+    font-size: 18px !important;
+}
+
+/* === BOUTONS D'ACTION === */
+
+.detailButtons,
+.mainDetailButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin: var(--space-lg) 0;
+}
+
+/* Bouton Lecture (principal) */
+.btnPlay,
+.detailButton-primary {
+    background: var(--accent-gradient) !important;
+    color: var(--text-primary) !important;
+    border: none !important;
+    border-radius: var(--radius-lg) !important;
+    padding: var(--space-md) var(--space-xl) !important;
+    font-size: var(--font-size-base) !important;
+    font-weight: var(--font-weight-bold) !important;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    transition: all var(--transition-fast) !important;
+    box-shadow: var(--shadow-glow);
+}
+
+.btnPlay:hover,
+.detailButton-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow-strong);
+    filter: brightness(1.1);
+}
+
+.btnPlay .material-icons {
+    font-size: 24px !important;
+}
+
+/* Boutons secondaires (trailer, favoris, etc.) */
+.detailButton,
+.btnAddToPlaylist,
+.btnMoreCommands {
+    background: var(--bg-tertiary) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-secondary) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: var(--space-sm) var(--space-lg) !important;
+    font-size: var(--font-size-sm) !important;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    transition: all var(--transition-fast) !important;
+}
+
+.detailButton:hover,
+.btnAddToPlaylist:hover {
+    background: var(--bg-elevated) !important;
+    border-color: var(--accent-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* === SYNOPSIS === */
+
+.overview,
+.itemOverview {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-base) !important;
+    line-height: var(--line-height-relaxed) !important;
+    max-width: 800px;
+    margin-bottom: var(--space-xl);
+}
+
+.overview p {
+    margin: 0;
+}
+
+/* === GENRES & TAGS === */
+
+.genres,
+.itemGenres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.genres a,
+.itemGenres a,
+.genreItem {
+    background: rgba(123, 44, 191, 0.15) !important;
+    color: var(--accent-secondary) !important;
+    border-radius: var(--radius-full) !important;
+    padding: var(--space-xs) var(--space-md) !important;
+    font-size: var(--font-size-sm) !important;
+    transition: all var(--transition-fast);
+}
+
+.genres a:hover,
+.itemGenres a:hover {
+    background: var(--accent-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* === CASTING / ÉQUIPE === */
+
+.detailSection-castCrew,
+.castScrollSlider {
+    margin-top: var(--space-2xl);
+}
+
+.castMember,
+.personCard {
+    text-align: center;
+    min-width: 120px;
+}
+
+.castMember img,
+.personCard img {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-full) !important;
+    object-fit: cover;
+    margin-bottom: var(--space-sm);
+    border: 2px solid var(--border-color);
+    transition: border-color var(--transition-fast);
+}
+
+.castMember:hover img,
+.personCard:hover img {
+    border-color: var(--accent-primary);
+}
+
+.castMember .cardText,
+.personCard .name {
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: var(--font-weight-medium) !important;
+}
+
+.castMember .cardText-secondary,
+.personCard .role {
+    color: var(--text-muted) !important;
+    font-size: var(--font-size-xs) !important;
+}
+
+/* === SECTIONS ADDITIONNELLES (Similaires, Saisons, etc.) === */
+
+.verticalSection-extdata,
+.similarSection,
+.seasonsSection {
+    margin-top: var(--space-2xl);
+    padding: 0 var(--space-xl);
+}
+
+.verticalSection-extdata h2 {
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-xl) !important;
+    font-weight: var(--font-weight-semibold) !important;
+    margin-bottom: var(--space-md);
+}
+
+/* === LISTE DES ÉPISODES === */
+
+.itemsContainer-episodes,
+.episodesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.episodeCard,
+.listItem-episode {
+    display: flex;
+    gap: var(--space-md);
+    background: var(--bg-secondary) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: var(--space-md) !important;
+    transition: background-color var(--transition-fast);
+}
+
+.episodeCard:hover,
+.listItem-episode:hover {
+    background: var(--bg-tertiary) !important;
+}
+
+.episodeCard img,
+.listItem-episode img {
+    width: 200px;
+    height: auto;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+}
+
+.episodeInfo {
+    flex: 1;
+}
+
+.episodeTitle,
+.listItemBody h3 {
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-base) !important;
+    font-weight: var(--font-weight-semibold) !important;
+    margin-bottom: var(--space-xs);
+}
+
+.episodeNumber {
+    color: var(--text-muted) !important;
+    font-size: var(--font-size-sm) !important;
+}
+
+.episodeOverview {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-sm) !important;
+    line-height: var(--line-height-normal);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* === INFOS MÉDIAS (Qualité, Audio, Sous-titres) === */
+
+.mediaInfoContent,
+.detailMediaInfo {
+    background: var(--bg-secondary) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: var(--space-lg) !important;
+    margin-top: var(--space-xl);
+}
+
+.mediaInfoContent h3 {
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-lg) !important;
+    margin-bottom: var(--space-md);
+}
+
+.mediaInfoContent table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.mediaInfoContent td {
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-sm) !important;
+}
+
+.mediaInfoContent td:first-child {
+    color: var(--text-muted) !important;
+    width: 150px;
+}
+
+/* === RESPONSIVE DÉTAILS === */
+
+@media (max-width: 1024px) {
+
+    .detailPagePrimaryContainer,
+    .mainDetailInfo {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .detailPageSecondaryContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .detailButtons,
+    .mainDetailButtons {
+        justify-content: center;
+    }
+
+    .genres {
+        justify-content: center;
+    }
+
+    .overview {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .detailPageContent {
+        margin-top: -150px;
+        padding: 0 var(--space-md);
+    }
+
+    .detailLogo,
+    .detailPrimaryImage {
+        width: 180px;
+    }
+
+    .detailPageTitle,
+    h1.itemName {
+        font-size: var(--font-size-2xl) !important;
+    }
+
+    .episodeCard img {
+        width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .backdropImage {
+        height: 40vh;
+        min-height: 250px;
+    }
+
+    .detailLogo,
+    .detailPrimaryImage {
+        width: 140px;
+    }
+
+    .detailPageTitle,
+    h1.itemName {
+        font-size: var(--font-size-xl) !important;
+    }
+
+    .btnPlay {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .detailButtons {
+        width: 100%;
+    }
+}

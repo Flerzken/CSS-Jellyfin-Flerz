@@ -1,0 +1,379 @@
+/* ============================================
+   JELLYFIN CUSTOM THEME - Lecteur Vidéo
+   Contrôles de lecture personnalisés
+   ============================================ */
+
+/* === CONTENEUR LECTEUR === */
+
+.videoPlayerContainer,
+.htmlVideoPlayerContainer {
+    background: #000 !important;
+}
+
+/* === BARRE DE CONTRÔLE === */
+
+.videoOsdBottom,
+.osdControls {
+    background: linear-gradient(to top,
+            rgba(10, 10, 15, 0.95) 0%,
+            rgba(10, 10, 15, 0.7) 70%,
+            transparent 100%) !important;
+    padding: var(--space-lg) var(--space-xl) var(--space-md) !important;
+    transition: opacity var(--transition-normal);
+}
+
+/* === BARRE DE PROGRESSION === */
+
+.osdPositionSlider,
+.videoOsdPositionSlider,
+.mdl-slider-container {
+    margin-bottom: var(--space-md) !important;
+}
+
+.slidertrack,
+.mdl-slider-background-track {
+    background: rgba(255, 255, 255, 0.2) !important;
+    height: 4px !important;
+    border-radius: var(--radius-full) !important;
+    transition: height var(--transition-fast);
+}
+
+.osdPositionSlider:hover .slidertrack,
+.mdl-slider-container:hover .mdl-slider-background-track {
+    height: 6px !important;
+}
+
+.slidertrack-played,
+.mdl-slider-played-track {
+    background: var(--accent-gradient) !important;
+    border-radius: var(--radius-full) !important;
+}
+
+.slidertrack-buffer {
+    background: rgba(255, 255, 255, 0.3) !important;
+    border-radius: var(--radius-full) !important;
+}
+
+/* Curseur de progression */
+.sliderthumb,
+.mdl-slider-thumb {
+    background: var(--accent-secondary) !important;
+    border: 3px solid var(--text-primary) !important;
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: var(--radius-full) !important;
+    box-shadow: var(--shadow-md) !important;
+    transform: scale(0);
+    transition: transform var(--transition-fast) !important;
+}
+
+.osdPositionSlider:hover .sliderthumb,
+.mdl-slider-container:hover .mdl-slider-thumb {
+    transform: scale(1);
+}
+
+/* === BOUTONS DE CONTRÔLE === */
+
+.osdControls button,
+.videoOsdBottom button,
+.osdIconButton {
+    background: transparent !important;
+    border: none !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-full) !important;
+    padding: var(--space-sm) !important;
+    transition: all var(--transition-fast) !important;
+    opacity: 0.8;
+}
+
+.osdControls button:hover,
+.videoOsdBottom button:hover,
+.osdIconButton:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.osdControls button .material-icons,
+.osdIconButton .material-icons {
+    font-size: 28px !important;
+}
+
+/* Bouton Lecture/Pause (plus grand) */
+.osdPlayPauseButton,
+.btnPlayPause {
+    background: var(--accent-gradient) !important;
+    border-radius: var(--radius-full) !important;
+    width: 56px !important;
+    height: 56px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    opacity: 1 !important;
+    box-shadow: var(--shadow-glow);
+    transition: all var(--transition-fast) !important;
+}
+
+.osdPlayPauseButton:hover,
+.btnPlayPause:hover {
+    transform: scale(1.1) !important;
+    box-shadow: var(--shadow-glow-strong);
+}
+
+.osdPlayPauseButton .material-icons,
+.btnPlayPause .material-icons {
+    font-size: 32px !important;
+}
+
+/* === AFFICHAGE DU TEMPS === */
+
+.osdTimeText,
+.startTime,
+.endTime,
+.osdPositionText {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-sm) !important;
+    font-family: var(--font-family) !important;
+    font-variant-numeric: tabular-nums;
+}
+
+.runtimeText,
+.osdCurrentTime {
+    color: var(--text-primary) !important;
+    font-weight: var(--font-weight-medium) !important;
+}
+
+/* === SLIDER VOLUME === */
+
+.volumeSlider,
+.osdVolumeSlider {
+    width: 100px !important;
+}
+
+.volumeSlider .slidertrack,
+.osdVolumeSlider .slidertrack {
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.volumeSlider .slidertrack-played,
+.osdVolumeSlider .slidertrack-played {
+    background: var(--text-primary) !important;
+}
+
+/* === TITRE DU MÉDIA === */
+
+.osdTitle,
+.osdMediaInfo,
+.videoOsdHeader {
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-lg) !important;
+    font-weight: var(--font-weight-semibold) !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.osdSecondaryTitle,
+.osdSubtitle {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-sm) !important;
+}
+
+/* === MENU DES PISTES (Audio/Sous-titres) === */
+
+.trackSelections,
+.subtitleTrackSelections,
+.audioTrackSelections {
+    background: var(--bg-secondary) !important;
+    border-radius: var(--radius-lg) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow-xl) !important;
+    padding: var(--space-sm) !important;
+    min-width: 250px;
+}
+
+.trackSelections h3 {
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-sm) !important;
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: var(--space-xs);
+}
+
+.trackItem,
+.selectTrackContainer {
+    padding: var(--space-sm) var(--space-md) !important;
+    border-radius: var(--radius-md) !important;
+    color: var(--text-secondary) !important;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.trackItem:hover,
+.selectTrackContainer:hover {
+    background: rgba(123, 44, 191, 0.1) !important;
+    color: var(--text-primary) !important;
+}
+
+.trackItem.selected,
+.selectTrackContainer.selected {
+    background: var(--accent-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* === CHAPITRES === */
+
+.chapterThumb {
+    border-radius: var(--radius-md) !important;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: border-color var(--transition-fast);
+}
+
+.chapterThumb:hover,
+.chapterThumb.selected {
+    border-color: var(--accent-primary);
+}
+
+.chapterThumbText {
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-sm) !important;
+}
+
+.chapterThumbTime {
+    color: var(--text-muted) !important;
+    font-size: var(--font-size-xs) !important;
+}
+
+/* === INDICATEUR DE CHARGEMENT === */
+
+.osdSpinner,
+.loading-spinner {
+    color: var(--accent-secondary) !important;
+}
+
+/* === OVERLAY INFO === */
+
+.videoOsdTop {
+    background: linear-gradient(to bottom,
+            rgba(10, 10, 15, 0.8) 0%,
+            transparent 100%) !important;
+    padding: var(--space-md) var(--space-xl) var(--space-2xl) !important;
+}
+
+/* === MODE PLEIN ÉCRAN === */
+
+.osdControls.osd-visible {
+    opacity: 1;
+}
+
+.osdControls.osd-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Animation d'apparition/disparition */
+.videoOsdBottom,
+.videoOsdTop {
+    transition: opacity var(--transition-normal),
+        transform var(--transition-normal);
+}
+
+.videoOsdBottom.osd-hidden,
+.videoOsdTop.osd-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* === MINI LECTEUR (PIP) === */
+
+.upNextDialog,
+.upNextContainer {
+    background: var(--bg-secondary) !important;
+    border-radius: var(--radius-xl) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow-xl) !important;
+    overflow: hidden;
+}
+
+.upNextDialog-poster {
+    border-radius: var(--radius-lg) !important;
+}
+
+.upNextDialog-title {
+    color: var(--text-primary) !important;
+    font-weight: var(--font-weight-semibold) !important;
+}
+
+.upNextDialog-overview {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-sm) !important;
+}
+
+/* === RESPONSIVE LECTEUR === */
+
+@media (max-width: 768px) {
+
+    .osdControls button .material-icons,
+    .osdIconButton .material-icons {
+        font-size: 24px !important;
+    }
+
+    .osdPlayPauseButton,
+    .btnPlayPause {
+        width: 48px !important;
+        height: 48px !important;
+    }
+
+    .osdPlayPauseButton .material-icons,
+    .btnPlayPause .material-icons {
+        font-size: 28px !important;
+    }
+
+    .volumeSlider,
+    .osdVolumeSlider {
+        width: 80px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .osdTitle {
+        font-size: var(--font-size-base) !important;
+    }
+
+    /* Masquer certains boutons sur mobile */
+    .btnSettings,
+    .osdSettingsButton {
+        display: none !important;
+    }
+}
+
+/* === TV / GRANDS ÉCRANS === */
+
+@media (min-width: 1920px) {
+
+    .osdPlayPauseButton,
+    .btnPlayPause {
+        width: 72px !important;
+        height: 72px !important;
+    }
+
+    .osdPlayPauseButton .material-icons,
+    .btnPlayPause .material-icons {
+        font-size: 40px !important;
+    }
+
+    .osdControls button .material-icons {
+        font-size: 32px !important;
+    }
+
+    .osdTitle {
+        font-size: var(--font-size-2xl) !important;
+    }
+
+    .slidertrack {
+        height: 6px !important;
+    }
+
+    .osdPositionSlider:hover .slidertrack {
+        height: 8px !important;
+    }
+}

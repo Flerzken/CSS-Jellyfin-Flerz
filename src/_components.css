@@ -1,0 +1,282 @@
+/* ============================================
+   JELLYFIN CUSTOM THEME - Composants UI
+   Boutons, inputs, badges, modales
+   ============================================ */
+
+/* === BOUTONS === */
+
+.button-submit,
+.raised,
+.emby-button,
+button[is="emby-button"],
+.btnPlay,
+.detailButton {
+    background: var(--accent-gradient) !important;
+    color: var(--text-primary) !important;
+    border: none !important;
+    border-radius: var(--radius-lg) !important;
+    padding: var(--space-sm) var(--space-lg) !important;
+    font-family: var(--font-family) !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: var(--font-weight-semibold) !important;
+    cursor: pointer;
+    transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        filter var(--transition-fast) !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+}
+
+.button-submit:hover,
+.raised:hover,
+.emby-button:hover,
+button[is="emby-button"]:hover,
+.btnPlay:hover,
+.detailButton:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+    filter: brightness(1.1);
+}
+
+.button-submit:active,
+.raised:active,
+.emby-button:active,
+button[is="emby-button"]:active {
+    transform: translateY(0);
+}
+
+/* Boutons secondaires */
+.emby-button.secondary,
+.button-cancel,
+.btnCancel {
+    background: transparent !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-secondary) !important;
+}
+
+.emby-button.secondary:hover,
+.button-cancel:hover,
+.btnCancel:hover {
+    border-color: var(--accent-primary) !important;
+    color: var(--text-primary) !important;
+    background: rgba(123, 44, 191, 0.1) !important;
+}
+
+/* Bouton lecture (fab) */
+.fab,
+.playstatebutton-icon-played,
+.itemAction {
+    background: var(--accent-primary) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-full) !important;
+    transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast) !important;
+}
+
+.fab:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-glow-strong);
+}
+
+/* === INPUTS === */
+
+.emby-input,
+input[is="emby-input"],
+.emby-textarea,
+textarea[is="emby-textarea"],
+.emby-select,
+select[is="emby-select"] {
+    background-color: var(--bg-tertiary) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-md) !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font-family) !important;
+    font-size: var(--font-size-base) !important;
+    padding: var(--space-sm) var(--space-md) !important;
+    transition: border-color var(--transition-fast),
+        box-shadow var(--transition-fast) !important;
+}
+
+.emby-input:focus,
+input[is="emby-input"]:focus,
+.emby-textarea:focus,
+textarea[is="emby-textarea"]:focus,
+.emby-select:focus,
+select[is="emby-select"]:focus {
+    border-color: var(--accent-primary) !important;
+    box-shadow: 0 0 0 3px rgba(123, 44, 191, 0.2) !important;
+    outline: none !important;
+}
+
+.emby-input::placeholder,
+input::placeholder {
+    color: var(--text-muted) !important;
+}
+
+/* === CHECKBOX & RADIO === */
+
+.emby-checkbox,
+.checkboxContainer {
+    accent-color: var(--accent-primary);
+}
+
+.emby-checkbox+span,
+.checkboxLabel {
+    color: var(--text-secondary) !important;
+}
+
+/* Toggle switch custom */
+.emby-checkbox:checked+.checkboxLabel::before {
+    background: var(--accent-gradient) !important;
+}
+
+/* === BADGES === */
+
+.mediaInfoItem,
+.starRating,
+.badge {
+    background-color: var(--bg-elevated) !important;
+    color: var(--text-secondary) !important;
+    border-radius: var(--radius-sm) !important;
+    padding: var(--space-xs) var(--space-sm) !important;
+    font-size: var(--font-size-xs) !important;
+    font-weight: var(--font-weight-medium) !important;
+}
+
+/* Badge accent */
+.primaryMediaInfo,
+.mediaInfoOfficialRating {
+    background: var(--accent-gradient) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Badge nouveau */
+.indicator {
+    background: var(--color-success) !important;
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-xs) !important;
+    font-weight: var(--font-weight-bold) !important;
+    border-radius: var(--radius-sm) !important;
+}
+
+/* === MODALES / DIALOGUES === */
+
+.dialogContainer,
+.dialog,
+.formDialogContent {
+    background-color: var(--bg-secondary) !important;
+    border-radius: var(--radius-xl) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow-xl) !important;
+}
+
+.formDialogHeader {
+    background-color: var(--bg-tertiary) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0 !important;
+}
+
+.formDialogHeaderTitle {
+    color: var(--text-primary) !important;
+    font-weight: var(--font-weight-semibold) !important;
+}
+
+/* Backdrop de modal */
+.dialogBackdrop {
+    background-color: var(--overlay-dark) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* === TOOLTIPS === */
+
+.tooltip {
+    background-color: var(--bg-elevated) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-md) !important;
+    padding: var(--space-sm) var(--space-md) !important;
+    font-size: var(--font-size-sm) !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+
+/* === MENUS / DROPDOWNS === */
+
+.actionSheetContent,
+.actionSheet,
+.mainDrawer-scrollContainer,
+.navMenuOption,
+.selectContainer {
+    background-color: var(--bg-secondary) !important;
+}
+
+.actionSheetMenuItem,
+.navMenuOption {
+    color: var(--text-secondary) !important;
+    transition: background-color var(--transition-fast),
+        color var(--transition-fast) !important;
+}
+
+.actionSheetMenuItem:hover,
+.navMenuOption:hover,
+.navMenuOption-selected {
+    background-color: rgba(123, 44, 191, 0.15) !important;
+    color: var(--text-primary) !important;
+}
+
+.navMenuOption-selected {
+    border-left: 3px solid var(--accent-primary) !important;
+}
+
+/* === PROGRESS BARS === */
+
+.itemProgressBar,
+.mediaBrowser progress {
+    height: 4px !important;
+    border-radius: var(--radius-full) !important;
+    background-color: var(--bg-elevated) !important;
+    overflow: hidden;
+}
+
+.itemProgressBar .itemProgressBarForeground,
+progress::-webkit-progress-value {
+    background: var(--accent-gradient) !important;
+    border-radius: var(--radius-full) !important;
+}
+
+progress::-webkit-progress-bar {
+    background-color: var(--bg-elevated) !important;
+}
+
+/* === TABS === */
+
+.emby-tabs-slider,
+.emby-tab-button {
+    background: transparent !important;
+}
+
+.emby-tab-button {
+    color: var(--text-secondary) !important;
+    font-weight: var(--font-weight-medium) !important;
+    border-bottom: 2px solid transparent !important;
+    transition: color var(--transition-fast),
+        border-color var(--transition-fast) !important;
+}
+
+.emby-tab-button:hover {
+    color: var(--text-primary) !important;
+}
+
+.emby-tab-button-active {
+    color: var(--accent-secondary) !important;
+    border-bottom-color: var(--accent-primary) !important;
+}
+
+/* === NOTIFICATIONS / TOASTS === */
+
+.toast {
+    background-color: var(--bg-elevated) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-lg) !important;
+    border-left: 4px solid var(--accent-primary) !important;
+    box-shadow: var(--shadow-lg) !important;
+}

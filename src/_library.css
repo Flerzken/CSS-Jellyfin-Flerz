@@ -1,0 +1,322 @@
+/* ============================================
+   JELLYFIN CUSTOM THEME - Bibliothèques
+   Pages de listing Films/Séries
+   ============================================ */
+
+/* === CONTENEUR BIBLIOTHÈQUE === */
+
+.libraryPage,
+.itemsView,
+.withTabs {
+    background: var(--bg-primary) !important;
+    padding-top: calc(var(--header-height) + var(--space-lg)) !important;
+}
+
+/* === EN-TÊTE BIBLIOTHÈQUE === */
+
+.libraryViewNav,
+.viewSettings {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--bg-secondary) !important;
+    border-radius: var(--radius-lg) !important;
+    margin: var(--space-md) var(--space-lg) var(--space-lg);
+}
+
+/* Titre de la bibliothèque */
+.libraryViewNav h1,
+.pageTitle-library {
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-2xl) !important;
+    font-weight: var(--font-weight-bold) !important;
+    margin: 0 !important;
+}
+
+/* === FILTRES & TRI === */
+
+.filterButton,
+.btnSort,
+.sortButton {
+    background: var(--bg-tertiary) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-secondary) !important;
+    border-radius: var(--radius-md) !important;
+    padding: var(--space-sm) var(--space-md) !important;
+    font-size: var(--font-size-sm) !important;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.filterButton:hover,
+.btnSort:hover,
+.sortButton:hover {
+    background: var(--bg-elevated) !important;
+    border-color: var(--accent-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+.filterButton.is-active,
+.btnSort.is-active {
+    background: rgba(123, 44, 191, 0.15) !important;
+    border-color: var(--accent-primary) !important;
+    color: var(--accent-secondary) !important;
+}
+
+/* Dropdown de filtre */
+.filterMenu,
+.sortMenu,
+.selectmenu-container {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-lg) !important;
+    box-shadow: var(--shadow-xl) !important;
+    padding: var(--space-sm) !important;
+    min-width: 200px;
+}
+
+.filterMenuItem,
+.sortMenuItem,
+.selectmenu-item {
+    padding: var(--space-sm) var(--space-md) !important;
+    border-radius: var(--radius-md) !important;
+    color: var(--text-secondary) !important;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.filterMenuItem:hover,
+.sortMenuItem:hover,
+.selectmenu-item:hover {
+    background: rgba(123, 44, 191, 0.1) !important;
+    color: var(--text-primary) !important;
+}
+
+.filterMenuItem.is-selected,
+.sortMenuItem.is-selected {
+    background: var(--accent-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* === BOUTONS DE VUE (Grille/Liste) === */
+
+.viewButton,
+.btnToggleView {
+    background: transparent !important;
+    border: none !important;
+    color: var(--text-muted) !important;
+    padding: var(--space-sm) !important;
+    border-radius: var(--radius-md) !important;
+    transition: color var(--transition-fast);
+}
+
+.viewButton:hover,
+.btnToggleView:hover {
+    color: var(--text-primary) !important;
+}
+
+.viewButton.is-active,
+.btnToggleView.is-active {
+    color: var(--accent-secondary) !important;
+}
+
+/* === BARRE DE RECHERCHE DANS BIBLIOTHÈQUE === */
+
+.librarySearchContainer,
+.searchContainer {
+    flex: 1;
+    max-width: 400px;
+}
+
+.librarySearchContainer input,
+.searchContainer input {
+    width: 100%;
+    background: var(--bg-primary) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-full) !important;
+    color: var(--text-primary) !important;
+    padding: var(--space-sm) var(--space-lg) !important;
+    font-size: var(--font-size-sm) !important;
+}
+
+.librarySearchContainer input:focus,
+.searchContainer input:focus {
+    border-color: var(--accent-primary) !important;
+    box-shadow: 0 0 0 3px rgba(123, 44, 191, 0.1) !important;
+}
+
+/* === GRILLE DE CONTENUS === */
+
+.itemsContainer-tv,
+.itemsContainer-movies,
+.itemsContainer-albums,
+.vertical-wrap {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
+    gap: var(--space-lg) !important;
+    padding: 0 var(--space-lg) var(--space-2xl) !important;
+}
+
+/* Plus de colonnes sur grands écrans */
+@media (min-width: 1200px) {
+
+    .itemsContainer-tv,
+    .itemsContainer-movies,
+    .vertical-wrap {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
+    }
+}
+
+@media (min-width: 1600px) {
+
+    .itemsContainer-tv,
+    .itemsContainer-movies,
+    .vertical-wrap {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
+    }
+}
+
+/* === ALPHABAR (Navigation alphabétique) === */
+
+.alphaPickerContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--bg-secondary) !important;
+    border-radius: var(--radius-lg) !important;
+    margin: 0 var(--space-lg) var(--space-lg);
+}
+
+.alphaPickerButton {
+    background: transparent !important;
+    border: none !important;
+    color: var(--text-muted) !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: var(--font-weight-medium) !important;
+    padding: var(--space-xs) var(--space-sm) !important;
+    border-radius: var(--radius-sm) !important;
+    min-width: 32px;
+    transition: all var(--transition-fast);
+}
+
+.alphaPickerButton:hover {
+    color: var(--text-primary) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.alphaPickerButton.is-active {
+    background: var(--accent-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* === COMPTEUR DE RÉSULTATS === */
+
+.listItemsCount,
+.resultCount {
+    color: var(--text-muted) !important;
+    font-size: var(--font-size-sm) !important;
+    padding: var(--space-sm) var(--space-lg);
+}
+
+/* === ÉTAT VIDE === */
+
+.noItemsMessage,
+.emptyLibraryMessage {
+    text-align: center;
+    padding: var(--space-3xl) var(--space-lg);
+    color: var(--text-muted) !important;
+}
+
+.noItemsMessage h1 {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-xl) !important;
+    margin-bottom: var(--space-md);
+}
+
+/* === PAGINATION === */
+
+.paging,
+.listPaging {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xl) var(--space-lg);
+}
+
+.paging button,
+.listPaging button {
+    background: var(--bg-tertiary) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-secondary) !important;
+    border-radius: var(--radius-md) !important;
+    padding: var(--space-sm) var(--space-md) !important;
+    min-width: 40px;
+    transition: all var(--transition-fast);
+}
+
+.paging button:hover,
+.listPaging button:hover {
+    background: var(--bg-elevated) !important;
+    border-color: var(--accent-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+.paging button.is-active {
+    background: var(--accent-primary) !important;
+    border-color: var(--accent-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* === RESPONSIVE BIBLIOTHÈQUE === */
+
+@media (max-width: 768px) {
+
+    .libraryViewNav,
+    .viewSettings {
+        flex-wrap: wrap;
+        margin: var(--space-sm) var(--space-md);
+        padding: var(--space-sm) var(--space-md);
+    }
+
+    .librarySearchContainer,
+    .searchContainer {
+        order: -1;
+        width: 100%;
+        max-width: none;
+    }
+
+    .itemsContainer-tv,
+    .itemsContainer-movies,
+    .vertical-wrap {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important;
+        gap: var(--space-md) !important;
+        padding: 0 var(--space-md) var(--space-xl) !important;
+    }
+
+    .alphaPickerContainer {
+        margin: 0 var(--space-md) var(--space-md);
+        padding: var(--space-sm);
+    }
+
+    .alphaPickerButton {
+        padding: var(--space-xs) !important;
+        min-width: 28px;
+        font-size: var(--font-size-xs) !important;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .itemsContainer-tv,
+    .itemsContainer-movies,
+    .vertical-wrap {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}

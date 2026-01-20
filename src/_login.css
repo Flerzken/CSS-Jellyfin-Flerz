@@ -1,0 +1,225 @@
+/* ============================================
+   JELLYFIN CUSTOM THEME - Page de Connexion
+   Login screen avec effet glassmorphism
+   ============================================ */
+
+/* === CONTAINER LOGIN === */
+
+.loginPage,
+#loginPage {
+    background: var(--bg-primary) !important;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Fond avec gradient animé subtil */
+.loginPage::before,
+#loginPage::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at center,
+            rgba(123, 44, 191, 0.15) 0%,
+            rgba(10, 10, 15, 0) 50%);
+    animation: loginGradientMove 15s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes loginGradientMove {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    33% {
+        transform: translate(10%, 10%) rotate(10deg);
+    }
+
+    66% {
+        transform: translate(-10%, 5%) rotate(-10deg);
+    }
+}
+
+/* === FORMULAIRE LOGIN === */
+
+.readOnlyContent,
+.manualLoginForm,
+.visualLoginForm {
+    background: rgba(22, 22, 29, 0.8) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-2xl) !important;
+    padding: var(--space-2xl) !important;
+    box-shadow: var(--shadow-xl) !important;
+    max-width: 400px;
+    width: 90%;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Titre serveur */
+.serverName,
+.loginServerName {
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-2xl) !important;
+    font-weight: var(--font-weight-bold) !important;
+    text-align: center !important;
+    margin-bottom: var(--space-xl) !important;
+}
+
+/* === SÉLECTION UTILISATEUR === */
+
+.selectUserContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-md);
+}
+
+.card-selectUser,
+.selectUserCard {
+    background: var(--bg-tertiary) !important;
+    border: 2px solid transparent !important;
+    border-radius: var(--radius-xl) !important;
+    padding: var(--space-md) !important;
+    transition: all var(--transition-normal) !important;
+    cursor: pointer;
+}
+
+.card-selectUser:hover,
+.selectUserCard:hover {
+    border-color: var(--accent-primary) !important;
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+}
+
+/* Avatar utilisateur */
+.cardImage-img,
+.selectUserImage {
+    border-radius: var(--radius-full) !important;
+    width: 80px !important;
+    height: 80px !important;
+    object-fit: cover;
+    margin-bottom: var(--space-sm);
+}
+
+/* Nom utilisateur */
+.cardText,
+.selectUserName {
+    color: var(--text-primary) !important;
+    font-weight: var(--font-weight-medium) !important;
+    text-align: center;
+}
+
+/* === CHAMPS DU FORMULAIRE === */
+
+.inputContainer {
+    margin-bottom: var(--space-md) !important;
+}
+
+.inputLabel,
+.fieldDescription {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-sm) !important;
+    margin-bottom: var(--space-xs) !important;
+    display: block;
+}
+
+.loginPage .emby-input,
+#loginPage input[type="text"],
+#loginPage input[type="password"] {
+    width: 100% !important;
+    background: var(--bg-primary) !important;
+    border: 2px solid var(--border-color) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: var(--space-md) !important;
+    font-size: var(--font-size-base) !important;
+    transition: all var(--transition-fast) !important;
+}
+
+.loginPage .emby-input:focus,
+#loginPage input:focus {
+    border-color: var(--accent-primary) !important;
+    box-shadow: 0 0 0 4px rgba(123, 44, 191, 0.15) !important;
+}
+
+/* === BOUTON CONNEXION === */
+
+.loginPage .button-submit,
+.loginPage .raised,
+#loginPage .btnSubmitLogin {
+    width: 100% !important;
+    padding: var(--space-md) var(--space-xl) !important;
+    margin-top: var(--space-lg) !important;
+    font-size: var(--font-size-base) !important;
+    font-weight: var(--font-weight-bold) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+/* === LIENS SECONDAIRES === */
+
+.loginDisclaimer,
+.manualServerLink,
+.btnForgotPassword,
+.forgotPasswordContainer {
+    color: var(--text-muted) !important;
+    font-size: var(--font-size-sm) !important;
+    text-align: center;
+    margin-top: var(--space-lg);
+}
+
+.manualServerLink a,
+.btnForgotPassword {
+    color: var(--accent-secondary) !important;
+    transition: color var(--transition-fast);
+}
+
+.manualServerLink a:hover,
+.btnForgotPassword:hover {
+    color: var(--accent-light) !important;
+}
+
+/* === CHECKBOX "SE SOUVENIR" === */
+
+.checkboxContainer-withDescription {
+    margin-top: var(--space-md) !important;
+}
+
+.checkboxContainer-withDescription .fieldDescription {
+    color: var(--text-muted) !important;
+}
+
+/* === RESPONSIVE LOGIN === */
+
+@media (max-width: 480px) {
+
+    .readOnlyContent,
+    .manualLoginForm,
+    .visualLoginForm {
+        padding: var(--space-lg) !important;
+        border-radius: var(--radius-xl) !important;
+        margin: var(--space-md);
+    }
+
+    .serverName,
+    .loginServerName {
+        font-size: var(--font-size-xl) !important;
+    }
+
+    .cardImage-img,
+    .selectUserImage {
+        width: 60px !important;
+        height: 60px !important;
+    }
+}
